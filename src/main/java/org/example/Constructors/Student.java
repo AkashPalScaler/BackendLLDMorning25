@@ -7,7 +7,7 @@ public class Student {
     String name;
     int id;
     private int age;
-    private int gradYear;
+    protected int gradYear;
     Exam exam;
 
     public static int countOfStudent = 0;

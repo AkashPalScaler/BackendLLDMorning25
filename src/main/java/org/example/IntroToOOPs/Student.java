@@ -2,10 +2,10 @@ package org.example.IntroToOOPs;
 
 public class Student {
     //Attribute
-    String name;
-    int id;
+    public String name;
+    int id; //Default
     private int age;
-    int gradYear;
+    protected int gradYear;
 
 
     //Behaviours/functions
