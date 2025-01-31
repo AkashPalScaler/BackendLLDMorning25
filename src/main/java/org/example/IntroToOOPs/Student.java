@@ -6,11 +6,17 @@ public class Student {
     int id; //Default
     private int age;
     protected int gradYear;
+    static int countOfStudent;
+
+    //Static block
+    static {
+        countOfStudent = 10;//apicall();
+        //some logic to initialise static vars
+        // This block gets run only once when class is loaded
+    }
 
 
-    //Behaviours/functions
-
-
+    //Behaviours/functions\
     public int getAge() {
         return age;
     }

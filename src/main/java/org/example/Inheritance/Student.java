@@ -19,9 +19,9 @@ public class Student extends User {
         System.out.println("Student param constructor called!");
     }
 
-//    public void doSomething(){
-////        this.i = 10;
-//        this.gradYear =190;
-//    }
+    public void doSomething(){
+//        this.i = 10;
+        this.gradYear =190;
+    }
 
 }
