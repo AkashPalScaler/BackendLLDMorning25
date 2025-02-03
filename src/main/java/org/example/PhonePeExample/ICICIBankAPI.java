@@ -12,7 +12,7 @@ public class ICICIBankAPI implements BankAPI{
     @Override
     public int checkBalance(String accntNo) {
         String userId = accntNo; //transform
-        //Userid with actual bank API
+        //Userid with actual bank API http call to actual bank server
         return 0;
     }
 
