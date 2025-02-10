@@ -1,4 +1,4 @@
-package org.example.AdderSubtracterMutex;
+package org.example.AdderSubtractorAtomic;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -10,13 +10,11 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Client {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         Value v = new Value();
-        v.x = 0;
 
         Lock lock = new ReentrantLock();
-        Lock lock2 = new ReentrantLock();
 
-        Adder a = new Adder(v, lock, lock2);
-        Subtractor s = new Subtractor(v, lock, lock2);
+        Adder a = new Adder(v, lock);
+        Subtractor s = new Subtractor(v, lock);
 
         ExecutorService es = Executors.newCachedThreadPool();
 
