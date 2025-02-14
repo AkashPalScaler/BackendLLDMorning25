@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 public class Client {
     public static void main(String[] args) {
         Store store = new Store(5);
-        Semaphore prodSema = new Semaphore(5);
+        Semaphore prodSema = new Semaphore(10);
         Semaphore consSema = new Semaphore(0);
 
         Producer producer = new Producer(store, prodSema, consSema);

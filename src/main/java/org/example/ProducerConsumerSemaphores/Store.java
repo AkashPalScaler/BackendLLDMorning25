@@ -22,6 +22,7 @@ public class Store {
     }
 
     public void addItem(){
+        //preprocessing before adding item
         System.out.println("Producer is producing, current size : "+ items.size());
         items.add(new Object());
     }
@@ -29,6 +30,7 @@ public class Store {
     public void removeItem(){
         System.out.println("Consumer is consuming, current size : "+ items.size());
         items.remove(); // Smart to remove last available item
+        //postprocessing of item
         //items.removeLast() in non concurrent data structure ->  all 3 threads was trying to remove last item
     }
 }
