@@ -16,6 +16,7 @@ public class Consumer implements Runnable{
         while(true){
                 //if(currentSize > 0) -> item available or not?
             try {
+
                 consSema.acquire();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

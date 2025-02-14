@@ -18,6 +18,7 @@ public class Producer implements Runnable{
         while(true){
                 //if(currentSize < MaxSize)
             try {
+                //Thread comes here -> it needs all 5 permits to go inside
                 prodSema.acquire();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
