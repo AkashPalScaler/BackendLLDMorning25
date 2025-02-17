@@ -12,9 +12,9 @@ public class StudentPSPComparator implements Comparator<Student> {
 
         // Ascending order
         if(o1.psp > o2.psp){
-            return 10;
+            return 10; //+ve
         }else if(o1.psp < o2.psp){
-            return -20;
+            return -20; // -ve
         }
 
         return 0;
