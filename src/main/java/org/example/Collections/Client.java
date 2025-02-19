@@ -113,7 +113,7 @@ public class Client {
         // Keys are Random Ordered or Unordered
         Map<Integer, Integer> map1 = new HashMap<>();
         // DLL + Hashmap
-        // Insertion order
+        // Keys are following Insertion order
         Map<Integer, Integer> map2 = new LinkedHashMap<>();
         // TreeMap : Balance BST : Red Black Tree
         // Natural sorted order of keys

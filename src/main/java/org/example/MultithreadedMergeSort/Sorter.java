@@ -1,5 +1,6 @@
 package org.example.MultithreadedMergeSort;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -80,7 +81,6 @@ public class Sorter implements Callable<List<Integer>> {
             sortedArray.add(sortedRightArray.get(j));
             j += 1;
         }
-
         return sortedArray;
 
     }

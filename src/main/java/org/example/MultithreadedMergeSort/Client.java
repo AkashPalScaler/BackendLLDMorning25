@@ -16,7 +16,7 @@ public class Client {
 
         Future<List<Integer>> sortedArrFuture = es.submit(sorter);
 
-        List<Integer> sortedArr =  sortedArrFuture.get();
+        List<Integer> sortedArr = sortedArrFuture.get();
 
         System.out.println("Sorted Array :" + sortedArr.toString());
 
