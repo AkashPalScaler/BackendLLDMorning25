@@ -7,6 +7,8 @@ public class Client {
     public static void main(String[] args) {
 //        User u = new User();
         Student s = new Student("MorningBatch");
+        s.gradYear = 2019;
+        s.doSomething();
 
 //        s.name = "Akas";
 ////        s.id = 1; // Private can't be accessed

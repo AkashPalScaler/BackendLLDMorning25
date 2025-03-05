@@ -21,6 +21,7 @@ public class Student extends User {
 
     public void doSomething(){
 //        this.i = 10;
+        this.batch = "adfkjnad";
         this.gradYear =190;
     }
 
