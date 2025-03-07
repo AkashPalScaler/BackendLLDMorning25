@@ -30,10 +30,11 @@ public class Client {
 
         // Version 2
         Student s1 = Student.getBuilder()
-                .setAge(18)
+                .setAge(20)
                 .setName("Akash")
                 .setEmail("aksgh.pal95@gmail.com")
                 .build();
+
 
 
 
