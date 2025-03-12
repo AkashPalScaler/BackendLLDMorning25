@@ -10,6 +10,8 @@ public class YesBankAPI implements BankAPI{
         System.out.println("Transfering money through Yesbank");
     }
 
+
+    //Part of solution
     @Override
     public int checkBalance(String accntNo) {
         return 0;

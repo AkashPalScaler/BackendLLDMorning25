@@ -24,9 +24,9 @@ public class PhonePe {
 //    }
 
 
-    // Right way ("Code to intrerfaces not to classes")
+    // Right way ("Code to interfaces not to classes")
     //Before BAN -> After BAN
-    BankAPI bankapi = new YesBankAPI();
+    BankAPI bankapi = new ICICIBankAPI();
     int getBalance(String accnt){
         bankapi.checkBalance(accnt);
         return 0;

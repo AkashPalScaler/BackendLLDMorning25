@@ -10,13 +10,13 @@ import org.example.DesignPatterns.Factory.Components.InputComponentFactory;
 public class Client {
     public static void main(String[] args) {
 
-        String platformName = args[0]; // "Android"
+        String platformName = "Android"; // args[0]; // "Android"
 
 
         Platform p = PlatformFactory.getPlatform(platformName);
 
         InputComponentFactory icf = p.createInputComponentFactory();
-        ContainerComponentFactory ccf = p.createContainerComponentFactory();
+//        ContainerComponentFactory ccf = p.createContainerComponentFactory();
 
         Button b = icf.createButton();
         Checkbox c  = icf.createCheckbox();
