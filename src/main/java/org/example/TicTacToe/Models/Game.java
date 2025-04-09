@@ -115,6 +115,12 @@ public class Game {
         return false;
     }
 
+    public void UndoWinningStrategies(Move move){
+        for(WinningStrategy strategy: winningStrategies){
+            strategy.handleUndo(move);
+        }
+    }
+
     public void makeMove(){
         //Check next player
         Player currentPlayer = players.get(nextPlayerIndex);
@@ -143,8 +149,42 @@ public class Game {
         //Increment the next player index
         nextPlayerIndex++; //0, 1, 2, 0, 1, 2
         nextPlayerIndex = nextPlayerIndex % players.size();
-        // (a + b) % n // (a - b)% n -> (a - b + n)%n
+        // (a + b) % n
+    }
 
+    public void undo(){
+        if(moves.size() == 0){
+            System.out.println("No moves to undo");
+            return;
+        }
+        //Remove from move history
+        Move lastMove = moves.get(moves.size()-1);
+
+        if(lastMove.getPlayer().getPlayerType().equals(PlayerType.BOT)){
+            System.out.println("Bot player move can't be undone");
+            return;
+        }
+
+        moves.remove(lastMove);
+
+        //reset/Update the cell on the board
+        Cell cellToUpdate = board.getGrid().get(lastMove.getCell().getRow()).get(lastMove.getCell().getCol());
+        cellToUpdate.setCellState(CellState.EMPTY);
+        cellToUpdate.setSymbol(null);
+
+        //Alternative if you want to replace the cell altogether
+//        board.getGrid().get(lastMove.getCell().getRow()).add(lastMove.getCell().getCol(), new Cell(lastMove.getCell().getRow(), lastMove.getCell().getCol()));
+
+        setGameState(GameState.IN_PROGRESS);
+        setWinner(null);
+
+
+        //Revert the nextPlayerindex
+        nextPlayerIndex--;
+        nextPlayerIndex = (nextPlayerIndex + players.size())%players.size();
+        // (a - b)% n -> (a - b + n)%n
+
+        UndoWinningStrategies(lastMove);
     }
 
     //inner class

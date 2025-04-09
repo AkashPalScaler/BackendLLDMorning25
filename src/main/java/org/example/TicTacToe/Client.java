@@ -1,5 +1,6 @@
 package org.example.TicTacToe;
 
+import jdk.dynalink.support.SimpleRelinkableCallSite;
 import org.example.TicTacToe.Controllers.GameController;
 import org.example.TicTacToe.Models.*;
 import org.example.TicTacToe.Strategies.ColumnWinningStrategy;
@@ -8,12 +9,13 @@ import org.example.TicTacToe.Strategies.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
         // 1. Creating Models
         // 2. Creating the controllers
-
+        Scanner sc = new Scanner(System.in);
         // Create players and winningStrategies
         List<Player>  players = new ArrayList<>(); // player needs to be added
 
@@ -45,6 +47,14 @@ public class Client {
         while(gameController.checkGameState(game) == GameState.IN_PROGRESS){
             gameController.makeMove(game);
             gameController.display(game);
+            if(game.getMoves().get(game.getMoves().size() - 1).getPlayer().getPlayerType().equals(PlayerType.HUMAN)){
+                System.out.println("Do you want to undo? Press 1 to continue and 2 to undo");
+                int undo = sc.nextInt();
+
+                if(undo == 2){
+                    gameController.undo(game);
+                }
+            }
         }
 
         if(gameController.checkGameState(game) == GameState.SUCCESS){
@@ -64,3 +74,8 @@ public class Client {
         //HW: Atleast write one winning strategy
     }
 }
+
+// New HW
+// Implement login
+// Add some more features like leaderboard
+// Once we learn springboot, update this to rest API with a UI
