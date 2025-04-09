@@ -91,6 +91,62 @@ public class Game {
         board.display();
     }
 
+    public boolean isValidMove(Move move){
+        int r = move.getCell().getRow();
+        int c = move.getCell().getCol();
+        if( r < 0 || r >= board.getDimension() || c < 0 || c >= board.getDimension()){
+            System.out.println("Invalid Move: Outside of the board");
+            return false;
+        }
+        if(board.getGrid().get(r).get(c).getCellState().equals(CellState.FILLED)){
+            System.out.println("Invalid Move: Cell is filled");
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean checkWinner(Move move){
+        for(WinningStrategy strategy: winningStrategies){
+            if(strategy.checkWinner(board, move)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void makeMove(){
+        //Check next player
+        Player currentPlayer = players.get(nextPlayerIndex);
+
+        Move move;
+        //validate the move
+        do{
+            move = currentPlayer.makeMove(board);
+        }while(!isValidMove(move));
+
+        //Update the cell on the board
+        Cell cellToUpdate = board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol());
+        cellToUpdate.setCellState(CellState.FILLED);
+        cellToUpdate.setSymbol(currentPlayer.getSymbol());
+
+        //Add move to move history
+        moves.add(move);
+
+        //Check the winner or if draw
+        if(checkWinner(move)){
+            setGameState(GameState.SUCCESS);
+            setWinner(currentPlayer);
+        }else if(moves.size() == board.getDimension() * board.getDimension()){
+            setGameState(GameState.DRAW);
+        }
+        //Increment the next player index
+        nextPlayerIndex++; //0, 1, 2, 0, 1, 2
+        nextPlayerIndex = nextPlayerIndex % players.size();
+        // (a + b) % n // (a - b)% n -> (a - b + n)%n
+
+    }
+
     //inner class
     public static class Builder{
         private int dimension; //used to create the board

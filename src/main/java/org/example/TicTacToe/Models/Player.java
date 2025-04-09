@@ -6,7 +6,7 @@ public abstract class Player {
     private Symbol symbol;
     private PlayerType playerType;
 
-    public abstract void makeMove();
+    public abstract Move makeMove(Board board);
 
     public Player(int playerId, String name, Symbol symbol, PlayerType playerType) {
         this.playerId = playerId;

@@ -18,14 +18,12 @@ public class GameController {
     }
 
     public GameState checkGameState(Game game){
+        //check winner
         return  game.getGameState();
     }
 
     public void makeMove(Game game){
-        //game
-        //Check next player
-        //Ask nextrplayer to make move
-        //change the next player index
+        game.makeMove();
     }
 
     public void undo(Game game){

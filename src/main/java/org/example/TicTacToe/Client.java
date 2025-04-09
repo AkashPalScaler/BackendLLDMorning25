@@ -43,12 +43,14 @@ public class Client {
 
         gameController.display(game);
         while(gameController.checkGameState(game) == GameState.IN_PROGRESS){
-            gameController.display(game);
             gameController.makeMove(game);
+            gameController.display(game);
         }
 
         if(gameController.checkGameState(game) == GameState.SUCCESS){
-            System.out.println();
+            System.out.println(game.getWinner().getName() + " is the Winner!");
+        }else if(gameController.checkGameState(game) == GameState.DRAW){
+            System.out.println("Game is draw!");
         }
 
         // 4. Make the move and check if undo is required
